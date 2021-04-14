@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Sidebar from '../Dashboard/Sidebar/Sidebar';
 
 const AddDoctor = () => {
+    
     const [info, setInfo] = useState({});
     const [file, setFile] = useState(null);
     const handleBlur = e => {
@@ -17,12 +18,11 @@ const AddDoctor = () => {
 
     const handleSubmit = () => {
         const formData = new FormData()
-        console.log(info);
         formData.append('file', file);
         formData.append('name', info.name);
         formData.append('email', info.email);
 
-        fetch('https://salty-plateau-71286.herokuapp.com/addADoctor', {
+        fetch('http://localhost:3001/addADoctor', {
             method: 'POST',
             body: formData
         })
